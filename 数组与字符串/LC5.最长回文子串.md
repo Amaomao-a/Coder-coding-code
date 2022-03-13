@@ -27,29 +27,28 @@ public:
         return {start+1, end-1};
     }
 
-    // string longestPalindrome(string s) {
-    //     if(s.length() < 2)  return s;
-    //     int left = 0, len = 0;
+    string longestPalindrome(string s) {
+        if(s.length() < 2)  return s;
+        int left = 0, len = 0;
 
-    //     // 中心扩散
-    //     for(int i=0; i<s.length(); i++)
-    //     {
-    //         auto [l1, r1] = getPalindrome(s, i, i);
-    //         auto [l2, r2] = getPalindrome(s, i, i+1);
-    //         if(r1 - l1 + 1 > len)
-    //         {
-    //             left = l1;
-    //             len = r1 - l1 + 1;
-    //         }
-    //         if(r2 - l2 + 1 > len)
-    //         {
-    //             left = l2;
-    //             len = r2 - l2 + 1;
-    //         }
-    //     }
-
-    //     return s.substr(left, len);
-    // }
+        // 中心扩散
+        for(int i=0; i<s.length(); i++)
+        {
+            auto [l1, r1] = getPalindrome(s, i, i);
+            auto [l2, r2] = getPalindrome(s, i, i+1);
+            if(r1 - l1 + 1 > len)
+            {
+                left = l1;
+                len = r1 - l1 + 1;
+            }
+            if(r2 - l2 + 1 > len)
+            {
+                left = l2;
+                len = r2 - l2 + 1;
+            }
+        }
+        return s.substr(left, len);
+    }
     
     string longestPalindrome(string s)
     {
